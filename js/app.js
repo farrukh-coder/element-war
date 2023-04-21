@@ -29,7 +29,13 @@ let playerElementDamage_1 = document.querySelectorAll('.player1 .element-damage 
   playerHealth1 = document.querySelector('.health-player1'),
   playerHealth2 = document.querySelector('.health-player2'),
   playerDamage1 = document.querySelector('.damage-player1'),
-  playerDamage2 = document.querySelector('.damage-player2')
+  playerDamage2 = document.querySelector('.damage-player2'),
+  modalPlayerDamage1 = document.querySelector('.player-current-dam-1'),
+  modalPlayerDamage2 = document.querySelector('.player-current-dam-2'),
+  stepModal = document.querySelector('.step-modal'),
+  stepModalTimer = document.querySelector('.step-modal__timer span'),
+  playerHealthModal1 = document.querySelector('.step-modal-health-1'),
+  playerHealthModal2 = document.querySelector('.step-modal-health-2');
 
 
 // Собитие для кнопок
@@ -49,14 +55,19 @@ function getElementOnClick(elements) {
       if (playerCharacter == 'first') {
         if (playerType == 'damage') {
           player1.currentDamageElem = elemValue;
+          document.querySelector('.current-damage-style-1').innerHTML = getElementRus(elemValue);
+
         } else {
           player1.currentDefenseElem = elemValue;
+          document.querySelector('.current-defense-style-1').innerHTML = getElementRus(elemValue);
         }
       } else {
         if (playerType == 'damage') {
           player2.currentDamageElem = elemValue;
+          document.querySelector('.current-damage-style-2').innerHTML = getElementRus(elemValue);
         } else {
           player2.currentDefenseElem = elemValue;
+          document.querySelector('.current-defense-style-2').innerHTML = getElementRus(elemValue);
         }
       }
 
@@ -78,7 +89,8 @@ let selectedElement4 = getElementOnClick(playerElementDefense_2);
 
 // Событие для кнопки "Следующий ход"
 nextStep.addEventListener('click', function () {
-  alert("Кнопка босилди ёпта")
+  showStepModal();
+
   if (processForPlayer1 > 0) {
     alert("первый игрок умер")
   } else if (processForPlayer2 > 0) {
@@ -97,6 +109,12 @@ nextStep.addEventListener('click', function () {
       processForPlayer2();
       playerHealth1.innerHTML = player1.health;
       playerHealth2.innerHTML = player2.health;
+
+      playerHealthModal1.innerHTML = player1.health;
+      playerHealthModal2.innerHTML = player2.health;
+
+      modalPlayerDamage1.innerHTML = playerDamage1.innerHTML
+      modalPlayerDamage2.innerHTML = playerDamage2.innerHTML
     }
   }
 });
@@ -276,5 +294,67 @@ function processForPlayer2() {
   } else if (player2.currentDamageElem == "stone" && player1.currentDefenseElem == "stone") {
     playerDamage2.innerHTML = 5
     return player1.health = player1.health - 5;
+  }
+}
+
+
+
+// модалка
+
+let intervalId, timeoutId;
+function showStepModal() {
+  
+  stepModal.classList.remove('step-modal_hidden');
+  setTimeout(() => {
+    stepModal.style.opacity = '1';
+  }, 150);
+
+  setTimeout(() => {
+    document.querySelector('.step-modal__inner').style.transform = 'scaleY(1)';
+  }, 300);
+
+
+  intervalId = setInterval(function () {
+    document.querySelector('.step-modal__timer span').innerHTML--;
+  }, 1000);
+
+  // Останавливаем интервал через 7 секунд
+  timeoutId = setTimeout(function () {
+    clearInterval(intervalId);
+    closeStepModal();
+  }, 7000);
+
+}
+
+document.querySelector('.step-modal__close').addEventListener('click', closeStepModal);
+
+function closeStepModal() {
+  clearInterval(intervalId);
+  clearTimeout(timeoutId);
+  document.querySelector('.step-modal__inner').style.transform = 'scaleY(0)';
+  document.querySelector('.step-modal__timer span').innerHTML = 7;
+  setTimeout(() => {
+    stepModal.style.opacity = '0';
+  }, 150);
+
+  setTimeout(() => {
+    stepModal.classList.add('step-modal_hidden');
+  }, 300);
+}
+
+
+
+// функция которая возвращает русское слово стихии в зависимости от передаваемого в него атрибута
+function getElementRus(attrElem){
+  if (attrElem == 'water'){
+    return "Вода";
+  } else if (attrElem == 'fire'){
+    return "Огонь"
+  } else if (attrElem == 'air'){
+    return "Воздух"
+  } else if (attrElem == 'lightning'){
+    return "Молния"
+  } else if (attrElem == 'stone'){
+    return "Камень"
   }
 }
