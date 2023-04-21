@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background-image: url(../img/bg.jpg);
+  background-size: cover;
+}
+
+header h2{
+  text-align: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px);
+
+}
+
+.container {
+  padding-top: 20px;
+  width: 1250px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  position: relative;
+}
+
+.player {
+  background: rgba(255, 255, 255, 0.3);
+  padding: 20px 30px;
+  backdrop-filter: blur(20px);
+  border-radius: 5px;
+}
+
+.stats {
+  font-size: 20px;
+}
+
+.stats__health {
+  margin-bottom: 5px;
+}
+
+.stats__damage {
+  margin-bottom: 20px;
+}
+
+.elements {}
+
+.element-title {
+  font-size: 18px;
+}
+
+.element-list {
+  display: flex;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.element-defense {
+  margin-top: 30px;
+}
+
+.element-damage .element {
+  background: rgb(242, 166, 166);
+}
+
+.element-defense .element {
+  background: rgb(166, 242, 166);
+}
+
+.element {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: 0.3s all;
+  border: 2px solid transparent;
+}
+
+.element img{
+  width: 70px;
+}
+
+.element-damage .elem-checked{
+  background: rgb(228, 121, 121);
+  border: 2px solid rgb(171, 28, 28);
+}
+
+.element-defense .elem-checked{
+  background: rgb(121, 228, 121);
+  border: 2px solid rgb(28, 171, 64);
+}
+
+.game {
+  height: max-content;
+  margin-bottom: 0;
+  margin-top: auto;
+}
+
+.next-step {
+  width: 150px;
+  height: 50px;
+  background: rgb(150, 97, 0);
+  outline: 0;
+  border: 0;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 600;
+  position: absolute;
+  bottom: -120px;
+  right: 0;
+}

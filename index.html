@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Война стихий</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header>
+    <h2>Война стихий</h2>
+  </header>
+  <section class="container">
+    <div class="player player1">
+      <div class="stats">
+        <div class="stats__name">Игрок 1: <span></span></div>
+        <div class="stats__health">Здоровье: <span class="health-player1">100</span></div>
+        <div class="stats__damage">Ваш последний урон: <span class="damage-player1">10</span></div>
+      </div>
+      <div class="elements element-damage">
+        <div class="element-title">
+          Выберите стихию для атаки
+        </div>
+        <div class="element-list">
+          <div class="element element-water" data-value="water" data-player="first" data-type="damage">
+            <img src="img/water.png" alt="">
+          </div>
+          <div class="element element-fire" data-value="fire" data-player="first" data-type="damage">
+            <img src="img/fire.png" alt="">
+          </div>
+          <div class="element element-air" data-value="air" data-player="first" data-type="damage">
+            <img src="img/air.png" alt="">
+          </div>
+          <div class="element element-lightning" data-value="lightning" data-player="first" data-type="damage">
+            <img src="img/lightning.png" alt="">
+          </div>
+          <div class="element element-stone" data-value="stone" data-player="first" data-type="damage">
+            <img src="img/stone.png" alt="">
+          </div>
+
+        </div>
+      </div>
+
+      <div class="elements element-defense">
+        <div class="element-title">
+          Выберите стихию для защиты
+        </div>
+        <div class="element-list">
+          <div class="element element-water" data-value="water" data-player="first" data-type="defense">
+            <img src="img/water.png" alt="">
+          </div>
+          <div class="element element-fire" data-value="fire" data-player="first" data-type="defense">
+            <img src="img/fire.png" alt="">
+          </div>
+          <div class="element element-air" data-value="air" data-player="first" data-type="defense">
+            <img src="img/air.png" alt="">
+          </div>
+          <div class="element element-lightning" data-value="lightning" data-player="first" data-type="defense">
+            <img src="img/lightning.png" alt="">
+          </div>
+          <div class="element element-stone" data-value="stone" data-player="first" data-type="defense">
+            <img src="img/stone.png" alt="">
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="game">
+      <button class="next-step">
+        Следующий ход
+      </button>
+    </div>
+    <div class="player player2">
+      <div class="stats">
+        <div class="stats__name">Игрок 2: <span></span></div>
+        <div class="stats__health">Здоровье: <span class="health-player2">100</span></div>
+        <div class="stats__damage">Ваш последний урон: <span class="damage-player2">10</span></div>
+      </div>
+      <div class="elements element-damage">
+        <div class="element-title">
+          Выберите стихию для атаки
+        </div>
+        <div class="element-list">
+          <div class="element element-water" data-value="water" data-player="second" data-type="damage">
+            <img src="img/water.png" alt="">
+          </div>
+          <div class="element element-fire" data-value="fire" data-player="second" data-type="damage">
+            <img src="img/fire.png" alt="">
+          </div>
+          <div class="element element-air" data-value="air" data-player="second" data-type="damage">
+            <img src="img/air.png" alt="">
+          </div>
+          <div class="element element-lightning" data-value="lightning" data-player="second" data-type="damage">
+            <img src="img/lightning.png" alt="">
+          </div>
+          <div class="element element-stone" data-value="stone" data-player="second" data-type="damage">
+            <img src="img/stone.png" alt="">
+          </div>
+
+        </div>
+      </div>
+
+      <div class="elements element-defense">
+        <div class="element-title">
+          Выберите стихию для защиты
+        </div>
+        <div class="element-list">
+          <div class="element element-water" data-value="water" data-player="second" data-type="defense">
+            <img src="img/water.png" alt="">
+          </div>
+          <div class="element element-fire" data-value="fire" data-player="second" data-type="defense">
+            <img src="img/fire.png" alt="">
+          </div>
+          <div class="element element-air" data-value="air" data-player="second" data-type="defense">
+            <img src="img/air.png" alt="">
+          </div>
+          <div class="element element-lightning" data-value="lightning" data-player="second" data-type="defense">
+            <img src="img/lightning.png" alt="">
+          </div>
+          <div class="element element-stone" data-value="stone" data-player="second" data-type="defense">
+            <img src="img/stone.png" alt="">
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/app.js"></script>
+</body>
+
+</html>
