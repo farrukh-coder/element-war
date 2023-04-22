@@ -10,7 +10,7 @@ body {
   background-size: cover;
 }
 
-header h2{
+header h2 {
   text-align: center;
   padding: 20px;
   background: rgba(255, 255, 255, 0.3);
@@ -47,8 +47,6 @@ header h2{
   margin-bottom: 20px;
 }
 
-.elements {}
-
 .element-title {
   font-size: 18px;
 }
@@ -83,16 +81,16 @@ header h2{
   border: 2px solid transparent;
 }
 
-.element img{
+.element img {
   width: 70px;
 }
 
-.element-damage .elem-checked{
+.element-damage .elem-checked {
   background: rgb(228, 121, 121);
   border: 2px solid rgb(171, 28, 28);
 }
 
-.element-defense .elem-checked{
+.element-defense .elem-checked {
   background: rgb(121, 228, 121);
   border: 2px solid rgb(28, 171, 64);
 }
@@ -118,7 +116,7 @@ header h2{
 }
 
 
-.step-modal{
+.step-modal {
   position: absolute;
   top: 0;
   left: 0;
@@ -134,7 +132,7 @@ header h2{
   opacity: 0;
 }
 
-.step-modal__inner{
+.step-modal__inner {
   padding: 50px 20px;
   max-width: 700px;
   height: auto;
@@ -158,8 +156,9 @@ header h2{
   color: #fff;
   margin-bottom: 50px;
   /* margin-top: -50px; */
-  
+
 }
+
 .step-modal__container {
   display: flex;
   justify-content: space-between;
@@ -169,18 +168,19 @@ header h2{
   text-align: center;
 }
 
-.step-modal__title{
+.step-modal__title {
   margin-bottom: 5px;
   margin-top: 15px;
 }
 
-.step-modal__title:first-of-type{
+.step-modal__title:first-of-type {
   margin-top: 0;
 }
 
-.step-modal__player{
+.step-modal__player {
   width: 300px;
 }
+
 .step-modal__border {
   width: 1px;
   height: 150px;
@@ -188,12 +188,70 @@ header h2{
   /* background-color: #fff; */
 }
 
-.step-modal_hidden{
+.step-modal_hidden {
   display: none;
 }
 
-.step-modal__close{
+.step-modal__close {
   width: 120px;
+  height: 40px;
+  font-weight: 600;
+  background-color: #966100;
+  color: #fff;
+  border: 0;
+  outline: 0;
+  border-radius: 5px;
+}
+
+
+.winner-modal,
+.loser-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  opacity: 0;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+  transition: 0.3s;
+}
+
+.winner-modal_hidden,
+.loser-modal_hidden {
+  display: none;
+}
+
+.winner-modal__inner,
+.loser-modal__inner {
+  padding: 50px 20px;
+  max-width: 700px;
+  width: 400px;
+  height: auto;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: scaleY(0);
+  transition: 0.3s all;
+}
+
+.winner-modal__title,
+.loser-modal__title {
+  color: #fff;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.restart-btn {
+  width: 150px;
   height: 40px;
   font-weight: 600;
   background-color: #966100;
