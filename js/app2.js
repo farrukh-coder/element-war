@@ -90,16 +90,7 @@ nextStep.addEventListener('click', function () {
   autoPlay(defenseElementList);
 
   attack(myPlayerDamage, myPlayerDefense, myBotDamage, myBotDefense);
-  if (attack == 'Игрок проиграл') {
-    alert('Игрок проиграл');
-    showModal(loserModal, 'loser-modal_hidden', '.loser-modal__inner');
-    
 
-  } else if (attack == 'Бот проиграл') {
-    showModal(winnerModal, 'winner-modal_hidden', '.winner-modal__inner');
-  } else {
-    showStepModal();
-  }
 });
 
 
@@ -124,14 +115,14 @@ function showStepModal() {
   timeoutId = setTimeout(function () {
     clearInterval(intervalId);
     closeStepModal();
-  }, 7000);
+  }, 5000);
 }
 
 function closeStepModal() {
   clearInterval(intervalId);
   clearTimeout(timeoutId);
   document.querySelector('.step-modal__inner').style.transform = 'scaleY(0)';
-  document.querySelector('.step-modal__timer span').innerHTML = 7;
+  document.querySelector('.step-modal__timer span').innerHTML = 5;
   setTimeout(() => {
     stepModal.style.opacity = '0';
   }, 150);
@@ -152,6 +143,11 @@ function showModal(modal, modaltype, modalInner) {
     document.querySelector(modalInner).style.transform = 'scaleY(1)';
   }, 300);
 }
+
+document.querySelector('.restart-btn').addEventListener('click', function () {
+  location.reload();
+});
+
 
 
 let damageToPlayer = 0,
@@ -196,20 +192,20 @@ function attack(playerAttack, playerDefense, botAttack, botDefense) {
 
   if (playerHealth <= 0) {
     playerHealth = 0;
-    alert("Игрок проиграл");
-    // return 'Игрок проиграл';
+    showModal(loserModal, 'loser-modal_hidden', '.loser-modal__inner');
 
   } else if (botHealth <= 0) {
     botHealth = 0;
-    alert('Бот проиграл')
-    // return 'Бот проиграл';
+    showModal(winnerModal, 'winner-modal_hidden', '.winner-modal__inner');
+
   } else {
     console.log('Игра идёт...');
-
+    showStepModal();
   }
   updateIndicators();
-
 }
+
+
 
 function updateIndicators() {
   let playerHealthStat = document.querySelectorAll('.player-health'),

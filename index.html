@@ -18,7 +18,7 @@
       <h2 class="winner-modal__title">
         Вы победили!
       </h2>
-      <button class="restart-btn">Перезапустить игру</button>
+      <button class="restart-btn" onclick="location.reload(); return false;">Перезапустить игру</button>
     </div>
   </div>
   <div class="loser-modal loser-modal_hidden">
@@ -26,12 +26,12 @@
       <h2 class="loser-modal__title">
         Вы проиграли!
       </h2>
-      <button class="restart-btn">Перезапустить игру</button>
+      <button class="restart-btn" onclick="location.reload(); return false;">Перезапустить игру</button>
     </div>
   </div>
   <div class="step-modal step-modal_hidden">
     <div class="step-modal__inner">
-      <p class="step-modal__timer"><span>7</span>&nbsp;секунд</p>
+      <p class="step-modal__timer"><span>5</span>&nbsp;секунд</p>
       <div class="step-modal__container">
         <div class="step-modal__player">
           <p class="step-modal__title">Игрок 1 наносит урон:</p>
