@@ -22,8 +22,8 @@ let player2 = {
 
 // Получение элементов с HTML
 let playerElementDamage_1 = document.querySelectorAll('.player1 .element-damage .element'),
-  playerElementDamage_2 = document.querySelectorAll('.player2 .element-damage .element'),
   playerElementDefense_1 = document.querySelectorAll('.player1 .element-defense .element'),
+  playerElementDamage_2 = document.querySelectorAll('.player2 .element-damage .element'),
   playerElementDefense_2 = document.querySelectorAll('.player2 .element-defense .element'),
   nextStep = document.querySelector('.next-step'),
   playerHealth1 = document.querySelector('.health-player1'),
@@ -38,6 +38,10 @@ let playerElementDamage_1 = document.querySelectorAll('.player1 .element-damage 
   playerHealthModal2 = document.querySelector('.step-modal-health-2');
 
 
+
+
+
+
 // Собитие для кнопок
 function getElementOnClick(elements) {
   elements.forEach(element => {
@@ -45,67 +49,83 @@ function getElementOnClick(elements) {
       elements.forEach(e => {
         e.classList.remove('elem-checked');
       });
-      element.classList.add('elem-checked')
-
-
-      let playerCharacter = element.getAttribute("data-player"),
-        playerType = element.getAttribute("data-type"),
-        elemValue = element.getAttribute('data-value');
-
-      if (playerCharacter == 'first') {
-        if (playerType == 'damage') {
-          player1.currentDamageElem = elemValue;
-          document.querySelector('.current-damage-style-1').innerHTML = getElementRus(elemValue);
-
-        } else {
-          player1.currentDefenseElem = elemValue;
-          document.querySelector('.current-defense-style-1').innerHTML = getElementRus(elemValue);
-        }
-      } else {
-        if (playerType == 'damage') {
-          player2.currentDamageElem = elemValue;
-          document.querySelector('.current-damage-style-2').innerHTML = getElementRus(elemValue);
-        } else {
-          player2.currentDefenseElem = elemValue;
-          document.querySelector('.current-defense-style-2').innerHTML = getElementRus(elemValue);
-        }
-      }
-
+      element.classList.add('elem-checked');
+      setAttrElem(element);
     });
   });
 }
 
-// Обработчик для кнопок
-let selectedElement = getElementOnClick(playerElementDamage_1);
-let selectedElement2 = getElementOnClick(playerElementDamage_2);
-let selectedElement3 = getElementOnClick(playerElementDefense_1);
-let selectedElement4 = getElementOnClick(playerElementDefense_2);
+// Запуск функции кнопок
+getElementOnClick(playerElementDamage_1);
+getElementOnClick(playerElementDefense_1);
+
+function setAttrElem(element) {
+  let playerCharacter = element.getAttribute("data-player"),
+    playerType = element.getAttribute("data-type"),
+    elemValue = element.getAttribute('data-value');
+
+  if (playerCharacter == 'first') {
+    if (playerType == 'damage') {
+      player1.currentDamageElem = elemValue;
+      document.querySelector('.current-damage-style-1').innerHTML = getElementRus(elemValue);
+
+    } else {
+      player1.currentDefenseElem = elemValue;
+      document.querySelector('.current-defense-style-1').innerHTML = getElementRus(elemValue);
+    }
+  } else {
+    if (playerType == 'damage') {
+      player2.currentDamageElem = elemValue;
+      document.querySelector('.current-damage-style-2').innerHTML = getElementRus(elemValue);
+    } else {
+      player2.currentDefenseElem = elemValue;
+      document.querySelector('.current-defense-style-2').innerHTML = getElementRus(elemValue);
+    }
+  }
+}
+
+
+let damageElementList = document.querySelectorAll('.player2 .element-damage .element');
+let defenseElementList = document.querySelectorAll('.player2 .element-defense .element');
+let randomElement;
 
 
 
 
+function autoPlay(damageType) {
+  let randomIndex = Math.floor(Math.random() * damageType.length);
+  randomElement = damageType[randomIndex];
+  damageType.forEach(e => {
+    e.classList.remove('elem-checked');
+  });
+  randomElement.classList.add('elem-checked');
+  setAttrElem(randomElement);
+  return randomElement;
+}
 
 
 
 // Событие для кнопки "Следующий ход"
 nextStep.addEventListener('click', function () {
-  showStepModal();
+  autoPlay(damageElementList);
+  autoPlay(defenseElementList);
+  if (processForPlayer1() === false) {
+    alert('error');
 
-  if (processForPlayer1 > 0) {
-    alert("первый игрок умер")
-  } else if (processForPlayer2 > 0) {
-    alert("второй игрок умер")
   } else {
-
     if (player1.health <= 0) {
       alert('game over1');
       playerHealth1.innerHTML = 0
+      console.log('game over 1');
+
     } else if (player2.health <= 0) {
       alert('game over2');
       playerHealth2.innerHTML = 0
+      console.log('game over 2');
+
 
     } else {
-      processForPlayer1();
+      // processForPlayer1();
       processForPlayer2();
       playerHealth1.innerHTML = player1.health;
       playerHealth2.innerHTML = player2.health;
@@ -113,10 +133,14 @@ nextStep.addEventListener('click', function () {
       playerHealthModal1.innerHTML = player1.health;
       playerHealthModal2.innerHTML = player2.health;
 
-      modalPlayerDamage1.innerHTML = playerDamage1.innerHTML
-      modalPlayerDamage2.innerHTML = playerDamage2.innerHTML
+      modalPlayerDamage1.innerHTML = playerDamage1.innerHTML;
+      modalPlayerDamage2.innerHTML = playerDamage2.innerHTML;
+
+      showStepModal();
     }
   }
+
+
 });
 
 
@@ -205,6 +229,8 @@ function processForPlayer1() {
   } else if (player1.currentDamageElem == "stone" && player2.currentDefenseElem == "stone") {
     playerDamage1.innerHTML = 5
     return player2.health = player2.health - 5;
+  } else {
+    return false;
   }
 }
 
@@ -294,16 +320,21 @@ function processForPlayer2() {
   } else if (player2.currentDamageElem == "stone" && player1.currentDefenseElem == "stone") {
     playerDamage2.innerHTML = 5
     return player1.health = player1.health - 5;
+  } else {
+    return false;
   }
 }
+
+
 
 
 
 // модалка
 
 let intervalId, timeoutId;
+
 function showStepModal() {
-  
+
   stepModal.classList.remove('step-modal_hidden');
   setTimeout(() => {
     stepModal.style.opacity = '1';
@@ -345,16 +376,16 @@ function closeStepModal() {
 
 
 // функция которая возвращает русское слово стихии в зависимости от передаваемого в него атрибута
-function getElementRus(attrElem){
-  if (attrElem == 'water'){
+function getElementRus(attrElem) {
+  if (attrElem == 'water') {
     return "Вода";
-  } else if (attrElem == 'fire'){
+  } else if (attrElem == 'fire') {
     return "Огонь"
-  } else if (attrElem == 'air'){
+  } else if (attrElem == 'air') {
     return "Воздух"
-  } else if (attrElem == 'lightning'){
+  } else if (attrElem == 'lightning') {
     return "Молния"
-  } else if (attrElem == 'stone'){
+  } else if (attrElem == 'stone') {
     return "Камень"
   }
 }
