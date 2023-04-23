@@ -99,6 +99,7 @@ let intervalId, timeoutId;
 
 function showStepModal() {
   stepModal.classList.remove('step-modal_hidden');
+  document.querySelector('body').classList.add('scroll-disable');
   setTimeout(() => {
     stepModal.style.opacity = '1';
   }, 150);
@@ -119,6 +120,8 @@ function showStepModal() {
 }
 
 function closeStepModal() {
+  document.querySelector('body').classList.remove('scroll-disable');
+
   clearInterval(intervalId);
   clearTimeout(timeoutId);
   document.querySelector('.step-modal__inner').style.transform = 'scaleY(0)';

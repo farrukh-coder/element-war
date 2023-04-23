@@ -20,7 +20,8 @@ header h2 {
 
 .container {
   padding-top: 20px;
-  width: 1250px;
+  width: 1150px;
+  max-width: 1250px;
   margin: auto;
   display: flex;
   justify-content: space-between;
@@ -29,6 +30,7 @@ header h2 {
 }
 
 .player {
+  width: 50%;
   background: rgba(255, 255, 255, 0.3);
   padding: 20px 30px;
   backdrop-filter: blur(20px);
@@ -53,6 +55,7 @@ header h2 {
 
 .element-list {
   display: flex;
+  justify-content: space-between;
   gap: 5px;
   margin-top: 5px;
 }
@@ -70,8 +73,8 @@ header h2 {
 }
 
 .element {
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -111,8 +114,9 @@ header h2 {
   color: #fff;
   font-weight: 600;
   position: absolute;
-  bottom: -120px;
-  right: 0;
+  bottom: -80px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 
@@ -129,7 +133,7 @@ header h2 {
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(5px);
   transition: 0.3s;
-  opacity: 0;
+  /* opacity: 0; */
 }
 
 .step-modal__inner {
@@ -143,7 +147,7 @@ header h2 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transform: scaleY(0);
+  /* transform: scaleY(0); */
   transition: 0.3s all;
 }
 
@@ -259,4 +263,8 @@ header h2 {
   border: 0;
   outline: 0;
   border-radius: 5px;
+}
+
+.scroll-disable{
+  overflow: hidden;
 }

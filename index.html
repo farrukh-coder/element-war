@@ -4,9 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Война стихий</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/media.css">
 </head>
 
 <body>
@@ -29,6 +30,7 @@
       <button class="restart-btn" onclick="location.reload(); return false;">Перезапустить игру</button>
     </div>
   </div>
+  
   <div class="step-modal step-modal_hidden">
     <div class="step-modal__inner">
       <p class="step-modal__timer"><span>5</span>&nbsp;секунд</p>
@@ -113,11 +115,7 @@
         </div>
       </div>
     </div>
-    <div class="game">
-      <button class="next-step">
-        Следующий ход
-      </button>
-    </div>
+    
     <div class="player player2">
       <div class="stats">
         <div class="stats__name">Игрок 2: <span>Бот</span></div>
@@ -126,7 +124,7 @@
       </div>
       <div class="elements element-damage">
         <div class="element-title">
-          Выберите стихию для атаки
+          Бот выберет стихию для атаки
         </div>
         <div class="element-list">
           <div class="element element-water" data-value="water" data-player="second" data-type="damage">
@@ -150,7 +148,7 @@
 
       <div class="elements element-defense">
         <div class="element-title">
-          Выберите стихию для защиты
+          Бот выберет стихию для защиты
         </div>
         <div class="element-list">
           <div class="element element-water" data-value="water" data-player="second" data-type="defense">
@@ -171,6 +169,12 @@
 
         </div>
       </div>
+    </div>
+
+    <div class="game">
+      <button class="next-step">
+        Следующий ход
+      </button>
     </div>
   </section>
 

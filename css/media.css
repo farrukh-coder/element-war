@@ -1,0 +1,130 @@
+@media (max-width: 1199.98px) {
+  .container {
+    width: 950px;
+    gap: 10px;
+  }
+
+  .element {
+    width: 70px;
+    height: 70px;
+  }
+
+  .element img {
+    width: 50px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .container {
+    width: 750px;
+  }
+
+  .player {
+    padding: 20px 20px;
+  }
+
+  .element {
+    width: 60px;
+    height: 60px;
+  }
+
+  .element img {
+    width: 40px;
+  }
+
+}
+
+@media (max-width: 767.98px) {
+  .container {
+    flex-direction: column;
+    width: 560px;
+    gap: 20px;
+    padding-bottom: 40px;
+  }
+
+  .player {
+    width: 100%;
+  }
+
+  .element {
+    width: 90px;
+    height: 90px;
+  }
+
+  .element img {
+    width: 60px;
+  }
+
+  .next-step {
+    position: relative;
+    bottom: 0;
+  }
+  .step-modal__inner{
+    width: 90%
+  }
+  .step-modal__container {
+    gap: 10px;
+  }
+  .step-modal__player{
+    width: 250px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .container {
+    width: 90%;
+  }
+  .element-list{
+    justify-content: space-evenly;
+  }
+  .element {
+    width: 60px;
+    height: 60px;
+  }
+
+  .element img {
+    width: 35px;
+  }
+  .winner-modal__inner, .loser-modal__inner{
+    min-width: 300px;
+    width: 90%;
+  }
+
+  .step-modal{
+    position: fixed;
+    align-items: flex-start;
+    z-index: 20;
+    padding: 0;
+    top: 0;
+    overflow-y: scroll;
+    backdrop-filter: blur(20px);
+    background-color: rgba(0, 0, 0, 0.1);
+    
+  }
+  .step-modal__inner{    
+    width: 100%;
+    border-radius: 0;
+  }
+  .step-modal__container {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 40px;
+
+  }
+  
+  .step-modal__border{
+    display: none;
+  }
+  .step-modal__timer{
+    font-size: 30px;
+    margin-bottom: 30px;
+  }
+  .step-modal__title{
+    font-size: 18px;
+    margin-top: 10px;
+  }
+  .step-modal__close{
+    margin-top: 20px;
+    min-height: 30px;
+  }
+}
